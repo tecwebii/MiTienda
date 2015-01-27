@@ -17,8 +17,11 @@ $resultado=mysqli_query($conexion,$consulta);
 		
 		<?php
 		while ($row = mysqli_fetch_assoc($resultado)){
-			echo $row['nombre_producto'];
+			echo "<div>";
+			echo "<a href='editar-producto.php?id=" . $row['id'] 
+				. "'>" .$row['nombre_producto'] . "</a>";
 			echo $row['clave_producto'];
+			echo "</div>";
 		}
 		
 		?>
