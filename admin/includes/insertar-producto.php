@@ -51,4 +51,5 @@ mysqli_query($conexion,$consulta_insertar);
 } else{
 	echo "Sólo puedes subir archivos tipo .jpg, .png ó .gif";
 }
+header("Location:../index.php");
 ?>

@@ -71,7 +71,8 @@ $resultado = mysqli_query($conexion,$consulta_categorias);
 			
 			<?php 
 			while ($row = mysqli_fetch_assoc($resultado)){
-				echo "<option value='" . $row['id_cat'] . "'>" . $row['nombre_categoria'] . "</option>";
+				echo "<option value='" . $row['id_cat'] . "'>"
+					. $row['nombre_categoria'] . "</option>";
 			}
 			 ?>	
 		</select>
