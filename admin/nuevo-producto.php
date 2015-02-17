@@ -1,7 +1,12 @@
 <?php
+//INCLUIMOS LA CONEXIÓN
 include_once("includes/config.php");
 $titulo="Nuevo Producto - Administrador";
+
+//DEFINIMOS LA CONSULTA PARA LAS CATEGORÍAS
 $consulta_categorias = "SELECT * FROM categorias";
+
+//EJECUTAMOS LA CONSULTA DE LAS CATEGORÍAS
 $resultado = mysqli_query($conexion,$consulta_categorias);
 ?>
 
@@ -10,11 +15,13 @@ $resultado = mysqli_query($conexion,$consulta_categorias);
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $titulo; ?></title>
+	<!-- INCLUIMOS LAS LIBRERIAS PARA UTILIZAR EL CALENDARIO DE JQUERY.UI -->
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 	  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<!-- INCLUIMOS LA LIBRERIA PARA UTILIZAR EL EDITOR "CKEDITOR.JS" -->
 	  <script src="js/ckeditor/ckeditor.js"></script>
-	
+	<!-- EJECUTAMOS LA FUNCIÓN DATEPICKER CON ALGUNOS PARAMETROS -->
 	<script>
 	  $(function() {
 	    $( "#fecha_lanzamiento" ).datepicker(
@@ -38,6 +45,7 @@ $resultado = mysqli_query($conexion,$consulta_categorias);
 
 <body>
 	<h1><?php echo $titulo; ?></h1>
+	<!-- CREAMOS UN FORMULARIO A TRAVÉS DEL CUAL EL USUARIO PODRÁ INGRESAR INFORMACIÓN A LA BASE DE DATOS -->
 	
 	<form action="includes/insertar-producto.php" method="POST" enctype="multipart/form-data">
 		
@@ -52,6 +60,7 @@ $resultado = mysqli_query($conexion,$consulta_categorias);
 		
 		<label for="descripcion_producto">Descripción del Producto</label>
 		<textarea name="descripcion_producto" id="descripcion_producto"></textarea><br>
+		<!-- EJECUTAMOS LA FUNCIÓN QUE SUSTITUYE EL TEXTAREA POR EL EDITOR  -->
 		<script>
 
 			CKEDITOR.replace( 'descripcion_producto' );
@@ -66,10 +75,11 @@ $resultado = mysqli_query($conexion,$consulta_categorias);
 		
 		<label for="categoria">Categoria</label>
 	
-		<select name="Categoria" id="Categoria">
+		<select name="id_categoria" id="id_categoria">
 			<option value="">- Selecciona una Categoria</option>
 			
-			<?php 
+			<?php
+			// MOSTRAMOS TODAS LAS CATEGORÍAS DISPONIBLES
 			while ($row = mysqli_fetch_assoc($resultado)){
 				echo "<option value='" . $row['id_cat'] . "'>"
 					. $row['nombre_categoria'] . "</option>";
