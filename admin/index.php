@@ -61,14 +61,14 @@ $paginas_totales = ceil($total_registros/$limite_registros);
 			//HACEMOS UNA CONSULTA A DOS TABLAS UNIENDOLAS A TRAVÉS DE INNER JOIN
 			$consulta_categoria="SELECT id_cat, nombre_categoria, id_categoria
 				FROM Categorias
-				INNER JOIN Productos
+				INNER JOIN Relacion_producto_categoria
 				ON id_cat = id_categoria
-				WHERE id ='$id_producto'";
+				WHERE id_producto ='$id_producto'";
 			//EJECUTAMOS LA CONSULTA
 			$resultado_categoria = mysqli_query($conexion,$consulta_categoria);
 			//MOSTRAMOS LAS CATEGORÍAS ENCONTRADAS A TRAVÉS DE OTRO WHILE
 				while ($row2 = mysqli_fetch_assoc($resultado_categoria)){
-					echo $row2['nombre_categoria'];
+					echo $row2['nombre_categoria'] . "<br>";
 					}
 			//echo $row['id_categoria'];
 			echo "</div>";
@@ -86,8 +86,6 @@ $paginas_totales = ceil($total_registros/$limite_registros);
 		}
 		
 		?>
-		
-		
 		
 	</body>
 </html>

@@ -1,0 +1,1 @@
+<h1>Me mandaste este valor por POST: <?php echo $_POST['nombre']; ?> </h1>
