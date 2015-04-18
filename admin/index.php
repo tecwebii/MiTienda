@@ -1,4 +1,6 @@
 <?php
+session_start();
+if (isset($_SESSION["nombre_usuario"])){
 // INCLUIMOS LA CONEXIÓN A LA BASE DE DATOS
 include_once("includes/config.php");
 $titulo="Mi Tienda - Administrador";
@@ -46,6 +48,8 @@ $paginas_totales = ceil($total_registros/$limite_registros);
 		<?php 
 		//INCLUIMOS EL MENÚ
 		include_once("includes/menu.php");
+		echo "Bienvenid@ " . $_SESSION["nickname"];
+		echo "<a href='includes/logout.php'>Cerrar Sesión </a>";
 		?>
 		<h1><?php echo $titulo; ?></h1>
 		
@@ -84,7 +88,10 @@ $paginas_totales = ceil($total_registros/$limite_registros);
 				echo "<a href='index.php?pagina=".$i."'>" . $i . "</a>";
 			}
 		}
-		
+	} else {
+		header("Location: login.php");
+	}
+	
 		?>
 		
 	</body>

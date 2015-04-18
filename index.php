@@ -53,10 +53,35 @@ echo $sugerencias;
 	<body>
 		<h1><?php echo $titulo; ?></h1>
 		
+		
+		<div id="login"> 
+		<?php include_once("includes/login.php"); ?>
+		</div>
+		
+		
+		<div id="header">
 		<form action="buscador.php" method="GET" >
 			<input type="text" name="palabra_clave" id="palabra_clave" placeholder="Busco...">
 			<input type="submit" value="Buscar...">
 		</form>
+		</div>
+		
+		<div id="bloques_productos">
+		<div class="destacados">
+		<h3>PRODUCTOS DESTACADOS</h3>
+		<?php include_once("includes/destacados.php"); ?>
+		</div>
+		
+		<div class="recientes">
+		<h3>PRODUCTOS RECIENTES</h3>
+		<?php include_once("includes/recientes.php"); ?>
+		</div>
+		</div>
+		
+		<div id="lateral"> 
+		 <h3> CATEGORÍAS</h3>
+		 <?php include_once("includes/categorias.php"); ?>
+		</div>
 		
 	</body>
 </html>
